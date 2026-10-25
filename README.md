@@ -2,6 +2,10 @@
 
 Experimental GenLayer **AI-synthesized, exhaustively checked cost-improving bitvector rewrites**. This is a formal computation primitive—not a graph transition, source oracle, service verifier, learned classifier, authorization certificate or proof of actual gas savings.
 
+[StudioNet contract and source](https://explorer-studio.genlayer.com/address/0xd2cC2EAB289B45CCfabb8ac5419c271b631DA3bb). The normalized deployed Python source matches the repository: SHA-256 `b3b5634b762c6c81ecbabafd42dd95a2a293d0260e8676647b01b6de0d944698`.
+
+[Live proof matrix and actual generated programs](LIVE_PROOFS.md) · [machine-readable ledger](PROOFS.json) · [ready-to-fill submission](SUBMISSION.md).
+
 Users register an exact formal program. The leader must generate actual replacement code using `gl.nondet.exec_prompt`; callers cannot submit a candidate, equivalence label or cost. Validators independently execute the original and the leader's exact proposed artifact on **all 256 input pairs**, check the grammar/resource bounds and recompute strict abstract cost improvement before accepting publication.
 
 ## Boundary and consequential AI
@@ -48,7 +52,7 @@ node scripts/sdk-check.mjs
 
 39 Python direct/helper/callback tests + 3 independent JavaScript tests; six SDK calldata roundtrips. The Python vector interpreter compares 1,645 generated expressions on all 256 inputs against the scalar production interpreter. JavaScript builds independent expression trees. A valid lower-cost candidate that differs **only at the final pair (15,15)** is rejected, demonstrating that sampling is insufficient. Actual callback tests reject a fully rehashed, shape-valid wrong-function artifact and forged cost/context, while accepting two syntactically distinct correct rewrites.
 
-Direct tests do not establish live consensus. Their Windows fixture defers only gltest's open-temporary-file `WinError 32` cleanup; contract exceptions remain visible. Live results, if any, are published separately after source, receipts and artifact verification.
+Direct tests do not establish live consensus. Their Windows fixture defers only gltest's open-temporary-file `WinError 32` cleanup; contract exceptions remain visible. The separate live ledger records fourteen finalized StudioNet transactions: eight successful executions and six expected errors. Three actual AI-generated rewrites reduced declared model cost from 9 to 7, 8 to 3 and 7 to 1. The proof matrix distinguishes full-domain equivalence from sampled native evaluation calls and retains voting metadata.
 
 ## Demo specifications
 
